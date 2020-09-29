@@ -1,6 +1,7 @@
 package org.apache.nifi.processors.crypto.provider;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.crypto.Cipher;
 import javax.crypto.Mac;
@@ -12,7 +13,7 @@ import org.apache.nifi.processors.crypto.model.FieldInfo;
 public class SunJCE implements Provider{
 
 	@Override
-	public void crypto(List<FieldInfo> fis) throws Exception {
+	public void crypto(List<FieldInfo> fis, Map<String, String> dynamicPropertyMap) throws Exception {
 		
 		for (FieldInfo fi : fis) {
 			

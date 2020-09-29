@@ -4,6 +4,9 @@ package org.apache.nifi.processors.crypto;
 import java.util.List;
 
 import org.apache.commons.io.IOUtils;
+import org.apache.nifi.components.PropertyDescriptor;
+import org.apache.nifi.components.Validator;
+import org.apache.nifi.processor.util.StandardValidators;
 import org.apache.nifi.util.MockFlowFile;
 import org.apache.nifi.util.TestRunner;
 import org.apache.nifi.util.TestRunners;
@@ -25,6 +28,8 @@ public class CryptographerTest {
     	
         testRunner.setProperty(Cryptographer.MAX_BULK_SIZE, "100");
         testRunner.setProperty(Cryptographer.FIELDS, "[{\"field\":\"customer_no\",\"secret\":\"muratemrahyaprak\",\"operation\":\"encrypt\"},{\"field\":\"card_no\",\"secret\":\"muratemrahyaprak\",\"operation\":\"encrypt\"},{\"field\":\"trx_amount\",\"secret\":\"yaprakemrahmurat\",\"operation\":\"hash\"}]");
+       
+        testRunner.setProperty("param1", "value1");
         
         //testRunner.setProperty(Cryptographer.FIELDS, "customer_no,card_no");
         //testRunner.setProperty(Cryptographer.KEY_NAMES, "muratemrahyaprak,yaprakemrahmurat");
@@ -36,6 +41,7 @@ public class CryptographerTest {
        
         //testRunner.setProperty(Cryptographer.CRYPTO_TYPE, Cryptographer.DECRYPT_AV);
         //testRunner.enqueue("{\"customer_no\":\"OdQ6n8qQ/TJYfR6sCZbi4Q==\",\"card_no\":\"iM/oCwIpstz+KPEpKLxFIA==\",\"trx_amount\":100,\"trx_tax\":1.0}");
+       
        
         
         //testRunner.setRunSchedule(10000);

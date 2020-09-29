@@ -6,6 +6,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -15,10 +16,14 @@ import javax.crypto.Cipher;
 import javax.crypto.Mac;
 
 import org.apache.commons.io.IOUtils;
+import org.apache.nifi.annotation.behavior.DynamicProperty;
 import org.apache.nifi.annotation.documentation.CapabilityDescription;
 import org.apache.nifi.annotation.documentation.Tags;
 import org.apache.nifi.annotation.lifecycle.OnScheduled;
 import org.apache.nifi.components.PropertyDescriptor;
+import org.apache.nifi.components.Validator;
+import org.apache.nifi.expression.AttributeExpression.ResultType;
+import org.apache.nifi.expression.ExpressionLanguageScope;
 import org.apache.nifi.flowfile.FlowFile;
 import org.apache.nifi.logging.ComponentLog;
 import org.apache.nifi.processor.AbstractProcessor;
@@ -42,11 +47,16 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  */
 @Tags({"crypto", "cipher", "mac", "has"})
 @CapabilityDescription("Crypto Utilities")
+@DynamicProperty(
+        name = "A URL query parameter",
+        value = "The value to set it to", description = "")
 public class Cryptographer extends AbstractProcessor {
 
     final ObjectMapper mapper = new ObjectMapper();
     
     List<FieldInfo> fieldInfo;
+    
+    
     
    
     // relationships
@@ -91,16 +101,39 @@ public class Cryptographer extends AbstractProcessor {
     public Set<Relationship> getRelationships() {
         return relationships;
     }
+    
+    @Override
+    protected PropertyDescriptor getSupportedDynamicPropertyDescriptor(final String propertyDescriptorName) {
+        return new PropertyDescriptor.Builder()
+                .required(false)
+                .name(propertyDescriptorName)
+                .addValidator(Validator.VALID)
+                .dynamic(true)
+                .expressionLanguageSupported(ExpressionLanguageScope.FLOWFILE_ATTRIBUTES)
+                .build();
+    }
 
     @OnScheduled
     public void setup(ProcessContext context) {
     	final ComponentLog logger = getLogger();
     	try {
-    		
+    	
+    		 Map<String, String> dynamicPropertyMap = new HashMap<String, String>();
+    		 for (Map.Entry<PropertyDescriptor, String> property : context.getProperties().entrySet()) {
+    	            PropertyDescriptor pd = property.getKey();
+    	            if (pd.isDynamic()) {
+    	                if (property.getValue() != null) {
+    	                	dynamicPropertyMap.put(pd.getName(), property.getValue());
+    	                }
+    	            }
+    	    }
+    		 
+    		logger.debug("DynamicProperties"+dynamicPropertyMap.toString()); 
+
     		final String fields = context.getProperty(FIELDS).getValue();
     		fieldInfo = mapper.readValue(fields, new TypeReference<List<FieldInfo>>(){});
 			Provider provider = new SunJCE();
-			provider.crypto(fieldInfo);
+			provider.crypto(fieldInfo, dynamicPropertyMap);
 			
 			logger.debug(fieldInfo.toString());
 			

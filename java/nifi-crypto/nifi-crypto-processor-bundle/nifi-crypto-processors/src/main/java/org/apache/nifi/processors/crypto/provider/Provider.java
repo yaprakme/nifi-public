@@ -1,6 +1,7 @@
 package org.apache.nifi.processors.crypto.provider;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.nifi.processors.crypto.model.FieldInfo;
 
@@ -15,6 +16,6 @@ public interface Provider {
 	public static final String AES = "AES";
 	    
 
-	public void crypto(List<FieldInfo> fis)  throws Exception;
+	public void crypto(List<FieldInfo> fis, Map<String, String> dynamicPropertyMap)  throws Exception;
 	
 }
