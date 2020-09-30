@@ -24,17 +24,17 @@ public class CryptographerTest {
     }
 
     @Test
-    public void testProcessor() throws Exception {
+    public void testSunDefaultProvider() throws Exception {
     	
+    	testRunner.setValidateExpressionUsage(false);
+    	
+    	testRunner.setProperty(Cryptographer.PROVIDER_TYPE, Cryptographer.PROVIDER_SUN_AV);
         testRunner.setProperty(Cryptographer.MAX_BULK_SIZE, "100");
+        testRunner.setProperty(Cryptographer.USERNAME, "username");
+        testRunner.setProperty(Cryptographer.PASSWORD, "password");
+        
         testRunner.setProperty(Cryptographer.FIELDS, "[{\"field\":\"customer_no\",\"secret\":\"muratemrahyaprak\",\"operation\":\"encrypt\"},{\"field\":\"card_no\",\"secret\":\"muratemrahyaprak\",\"operation\":\"encrypt\"},{\"field\":\"trx_amount\",\"secret\":\"yaprakemrahmurat\",\"operation\":\"hash\"}]");
-       
-        testRunner.setProperty("param1", "value1");
-        
-        //testRunner.setProperty(Cryptographer.FIELDS, "customer_no,card_no");
-        //testRunner.setProperty(Cryptographer.KEY_NAMES, "muratemrahyaprak,yaprakemrahmurat");
-        //testRunner.setProperty(Cryptographer.CRYPTO_TYPE, Cryptographer.ENCRYPT_AV);
-        
+              
         
         testRunner.enqueue("{\"customer_no\":\"1\",\"card_no\":\"cc11\",\"trx_amount\":100,\"trx_tax\":1.0}");
         testRunner.enqueue("{\"customer_no\":\"2\",\"card_no\":\"cc22\",\"trx_amount\":350,\"trx_tax\":3.5}");
@@ -62,7 +62,63 @@ public class CryptographerTest {
         printMockFlowFile(originals);
         
     }
+    
+    
 
+    @Test
+    public void testIngirianProvider() throws Exception {
+    	
+    	testRunner.setValidateExpressionUsage(false);
+    	
+    	testRunner.setProperty(Cryptographer.PROVIDER_TYPE, Cryptographer.PROVIDER_INGRIAN_AV);
+        testRunner.setProperty(Cryptographer.MAX_BULK_SIZE, "100");
+        testRunner.setProperty(Cryptographer.USERNAME, "username");
+        testRunner.setProperty(Cryptographer.PASSWORD, "password");
+        
+        testRunner.setProperty(Cryptographer.FIELDS, "[{\"field\":\"customer_no\",\"secret\":\"muratemrahyaprak\",\"operation\":\"encrypt\"},{\"field\":\"card_no\",\"secret\":\"muratemrahyaprak\",\"operation\":\"encrypt\"},{\"field\":\"trx_amount\",\"secret\":\"yaprakemrahmurat\",\"operation\":\"hash\"}]");
+              
+        
+        testRunner.enqueue("{\"customer_no\":\"1\",\"card_no\":\"cc11\",\"trx_amount\":100,\"trx_tax\":1.0}");
+        testRunner.enqueue("{\"customer_no\":\"2\",\"card_no\":\"cc22\",\"trx_amount\":350,\"trx_tax\":3.5}");
+       
+        
+        // ingrian parameters  
+        testRunner.setProperty("com.ingrian.security.nae.IngrianNAE_Properties_Conf_Filename", "C:\\Users\\is96435\\Desktop\\IngrianNAE.properties");
+        testRunner.setProperty("com.ingrian.security.nae.NAE_IP.1", "196.168.1.1");
+        testRunner.setProperty("com.ingrian.security.nae.NAE_Port", "9000");
+        testRunner.setProperty("com.ingrian.security.nae.KMIP_Port", "5696");
+        testRunner.setProperty("com.ingrian.security.nae.Protocol", "ssl");
+        testRunner.setProperty("com.ingrian.security.nae.Symmetric_Key_Cache_Enabled", "yes");
+        testRunner.setProperty("com.ingrian.security.nae.Asymmetric_Key_Cache_Enabled", "yes");
+        long symmetricKeyCacheExpirySeconds = 3600 * 24 * 30;
+        testRunner.setProperty("com.ingrian.security.nae.Symmetric_Key_Cache_Expiry", String.valueOf(symmetricKeyCacheExpirySeconds));
+        //testRunner.setProperty("Log_Level", "NONE");
+        
+       
+       
+        
+        
+       
+        
+        //testRunner.setRunSchedule(10000);
+        testRunner.run(1); 
+        
+        
+        
+        
+        List<MockFlowFile> success = testRunner.getFlowFilesForRelationship(Cryptographer.REL_SUCCESS);
+        List<MockFlowFile> fails = testRunner.getFlowFilesForRelationship(Cryptographer.REL_FAILURE);
+        List<MockFlowFile> originals = testRunner.getFlowFilesForRelationship(Cryptographer.REL_ORIGINAL);
+        
+        System.out.println("-------- succeeded flow size = "+success.size()+" ---------");
+        printMockFlowFile(success);
+        System.out.println("-------- failed flow size = "+fails.size()+" ---------");
+        printMockFlowFile(fails);
+        System.out.println("-------- original flow size = "+originals.size()+" ---------");
+        printMockFlowFile(originals);
+        
+    }
+    
     
     
     public void printMockFlowFile(List<MockFlowFile> flows) {

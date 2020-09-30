@@ -16,13 +16,12 @@ import javax.crypto.Cipher;
 import javax.crypto.Mac;
 
 import org.apache.commons.io.IOUtils;
-import org.apache.nifi.annotation.behavior.DynamicProperty;
 import org.apache.nifi.annotation.documentation.CapabilityDescription;
 import org.apache.nifi.annotation.documentation.Tags;
 import org.apache.nifi.annotation.lifecycle.OnScheduled;
+import org.apache.nifi.components.AllowableValue;
 import org.apache.nifi.components.PropertyDescriptor;
 import org.apache.nifi.components.Validator;
-import org.apache.nifi.expression.AttributeExpression.ResultType;
 import org.apache.nifi.expression.ExpressionLanguageScope;
 import org.apache.nifi.flowfile.FlowFile;
 import org.apache.nifi.logging.ComponentLog;
@@ -35,6 +34,7 @@ import org.apache.nifi.processor.exception.ProcessException;
 import org.apache.nifi.processor.io.InputStreamCallback;
 import org.apache.nifi.processor.util.StandardValidators;
 import org.apache.nifi.processors.crypto.model.FieldInfo;
+import org.apache.nifi.processors.crypto.provider.Ingrian;
 import org.apache.nifi.processors.crypto.provider.Provider;
 import org.apache.nifi.processors.crypto.provider.SunJCE;
 
@@ -47,17 +47,16 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  */
 @Tags({"crypto", "cipher", "mac", "has"})
 @CapabilityDescription("Crypto Utilities")
-@DynamicProperty(
-        name = "A URL query parameter",
-        value = "The value to set it to", description = "")
 public class Cryptographer extends AbstractProcessor {
 
     final ObjectMapper mapper = new ObjectMapper();
     
     List<FieldInfo> fieldInfo;
     
-    
-    
+    public static final String PROVIDER_SUN = "SunJCE";
+    public static final String PROVIDER_INGRIAN = "Ingrian";
+    public static final AllowableValue PROVIDER_SUN_AV = new AllowableValue(PROVIDER_SUN, "SunJCE", "Sun Default implementation");
+    public static final AllowableValue PROVIDER_INGRIAN_AV = new AllowableValue(PROVIDER_INGRIAN, "Ingrian", "Ingrian Provider");
    
     // relationships
     public static final Relationship REL_SUCCESS = new Relationship.Builder()
@@ -76,6 +75,22 @@ public class Cryptographer extends AbstractProcessor {
             .description("Original flow files are transferred to this relationship")
             .build();
 
+    public static final PropertyDescriptor USERNAME = new PropertyDescriptor.Builder()
+            .name("Username")
+            .description("Username to access the provider")
+            .required(false)
+            .addValidator(StandardValidators.NON_EMPTY_VALIDATOR)
+            .expressionLanguageSupported(ExpressionLanguageScope.VARIABLE_REGISTRY)
+            .build();
+
+    public static final PropertyDescriptor PASSWORD = new PropertyDescriptor.Builder()
+            .name("Password")
+            .description("Password to access the provider")
+            .required(false)
+            .sensitive(true)
+            .addValidator(StandardValidators.NON_EMPTY_VALIDATOR)
+            .expressionLanguageSupported(ExpressionLanguageScope.VARIABLE_REGISTRY)
+            .build();
     
     public static final PropertyDescriptor MAX_BULK_SIZE = new PropertyDescriptor
             .Builder().name("Max Bulk Size")
@@ -85,6 +100,15 @@ public class Cryptographer extends AbstractProcessor {
             .addValidator(StandardValidators.NON_EMPTY_VALIDATOR)
             .build();
     
+    public static final PropertyDescriptor PROVIDER_TYPE = new PropertyDescriptor.Builder()
+            .name("provider-type")
+            .displayName("Provider Type")
+            .description("Provider Type")
+            .required(true)
+            .defaultValue(PROVIDER_SUN_AV.getValue())
+            .allowableValues(PROVIDER_SUN_AV, PROVIDER_INGRIAN_AV)
+            .addValidator(StandardValidators.NON_EMPTY_VALIDATOR)
+            .build();
  
     
     public static final PropertyDescriptor FIELDS = new PropertyDescriptor
@@ -126,15 +150,23 @@ public class Cryptographer extends AbstractProcessor {
     	                	dynamicPropertyMap.put(pd.getName(), property.getValue());
     	                }
     	            }
-    	    }
-    		 
+    	    } 
     		logger.debug("DynamicProperties"+dynamicPropertyMap.toString()); 
 
+    		// get crypto descriptions
     		final String fields = context.getProperty(FIELDS).getValue();
     		fieldInfo = mapper.readValue(fields, new TypeReference<List<FieldInfo>>(){});
-			Provider provider = new SunJCE();
-			provider.crypto(fieldInfo, dynamicPropertyMap);
-			
+    		
+    		final String userName = context.getProperty(USERNAME).getValue();
+    		final String password = context.getProperty(PASSWORD).getValue();
+    		
+    		// set provider
+    		final String selectedProvider = context.getProperty(PROVIDER_TYPE).getValue();
+			Provider provider =  selectedProvider.equals(PROVIDER_SUN) ? new SunJCE() : new Ingrian();
+    		//Provider provider = new SunJCE(); 
+    		// initialize
+			provider.init(fieldInfo, userName, password, dynamicPropertyMap, logger);
+			// updated descriptions after the initialization
 			logger.debug(fieldInfo.toString());
 			
 		} catch (Exception e) {
@@ -154,6 +186,9 @@ public class Cryptographer extends AbstractProcessor {
         final List<PropertyDescriptor> descriptors = new ArrayList<PropertyDescriptor>();
         descriptors.add(MAX_BULK_SIZE);
         descriptors.add(FIELDS);
+        descriptors.add(USERNAME);
+        descriptors.add(PASSWORD);
+        descriptors.add(PROVIDER_TYPE);
    
         this.descriptors = Collections.unmodifiableList(descriptors);
 

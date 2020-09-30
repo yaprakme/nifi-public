@@ -27,17 +27,39 @@
 
     <dependencies>
        
-     
-        
+      <dependency>
+		    <groupId>com.ingrian</groupId>
+		    <artifactId>IngrianNAE</artifactId>
+		    <version>8.11.1</version>
+		</dependency>
+		
+		 <dependency>
+		    <groupId>com.ingrian</groupId>
+		    <artifactId>Ingrianlog4j-core</artifactId>
+		    <version>2.10.0</version>
+		</dependency>
+		
+		 <dependency>
+		    <groupId>com.ingrian</groupId>
+		    <artifactId>Ingrianlog4j-api</artifactId>
+		    <version>2.10.0</version>
+		</dependency>
+		
+		
+	    <dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-collections4</artifactId>
+		    <version>4.4</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>com.google.guava</groupId>
+		    <artifactId>guava</artifactId>
+		    <version>10.0.1</version>
+		</dependency>
+		        
          <!-- provided dependency so we can compile against it -->
          
-		
-         <dependency>
-            <groupId>org.apache.nifi</groupId>
-            <artifactId>nifi-dbcp-service-api</artifactId>
-            <version>${nifi.version}</version>
-            <scope>provided</scope>
-        </dependency>
      
         <dependency>
             <groupId>org.apache.nifi</groupId>

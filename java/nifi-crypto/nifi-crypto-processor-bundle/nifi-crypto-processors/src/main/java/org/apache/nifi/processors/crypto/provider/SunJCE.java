@@ -8,12 +8,13 @@ import javax.crypto.Mac;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
+import org.apache.nifi.logging.ComponentLog;
 import org.apache.nifi.processors.crypto.model.FieldInfo;
 
 public class SunJCE implements Provider{
 
 	@Override
-	public void crypto(List<FieldInfo> fis, Map<String, String> dynamicPropertyMap) throws Exception {
+	public void init(List<FieldInfo> fis, String userName, String password, Map<String, String> dynamicPropertyMap, ComponentLog logger) throws Exception {
 		
 		for (FieldInfo fi : fis) {
 			

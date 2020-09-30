@@ -3,6 +3,7 @@ package org.apache.nifi.processors.crypto.provider;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.nifi.logging.ComponentLog;
 import org.apache.nifi.processors.crypto.model.FieldInfo;
 
 public interface Provider {
@@ -16,6 +17,6 @@ public interface Provider {
 	public static final String AES = "AES";
 	    
 
-	public void crypto(List<FieldInfo> fis, Map<String, String> dynamicPropertyMap)  throws Exception;
+	public void init(List<FieldInfo> fis, String userName, String password, Map<String, String> dynamicPropertyMap, ComponentLog logger)  throws Exception;
 	
 }
