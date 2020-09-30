@@ -87,6 +87,7 @@ public class CryptographerTest {
         testRunner.setProperty("com.ingrian.security.nae.NAE_IP.1", "196.168.1.1");
         testRunner.setProperty("com.ingrian.security.nae.NAE_Port", "9000");
         testRunner.setProperty("com.ingrian.security.nae.KMIP_Port", "5696");
+        
         testRunner.setProperty("com.ingrian.security.nae.Protocol", "ssl");
         testRunner.setProperty("com.ingrian.security.nae.Symmetric_Key_Cache_Enabled", "yes");
         testRunner.setProperty("com.ingrian.security.nae.Asymmetric_Key_Cache_Enabled", "yes");
