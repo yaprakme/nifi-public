@@ -8,8 +8,8 @@
 ![Alt text](tcp1.PNG?raw=true "")
 
 # Build
-    mvn install
+    mvn clean build install
     
 # Deploy
-   - simply copy generated .ear file from target folder into $NIFI_HOME/lib folder
-   - import template files into Nifi to see live examples  
+   - simply copy generated .ear files from target folders into $NIFI_HOME/lib folder
+   - import example template.xml files into Nifi to see live examples  
