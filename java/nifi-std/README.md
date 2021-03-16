@@ -5,7 +5,7 @@
 
 ### GetTCP
    - since there is no standard request/response tcp processor in Nifi , this processor sends piece of login information to receive stream of data from specified ip:port
-   - in order to run junit test, you should start MockStreamServer first  
+   - in order to run junit test, you should start MockStreamServer first. use LOGON for logon phrase 
    
 ![Alt text](tcp1.PNG?raw=true "")
 
