@@ -2,8 +2,11 @@
 apache-nifi custom processors, groovy components and templates
 
 [nifi-cdc](java/nifi-cdc/README.md)
+
 [nifi-redis](java/nifi-redis/README.md)
+
 [JCE Crypto](java/nifi-std/README.md)
+
 
 
 ### minimum requirements
