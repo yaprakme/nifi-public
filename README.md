@@ -7,6 +7,8 @@ apache-nifi custom processors, groovy components and templates
 
 [JCE Crypto](java/nifi-std/README.md)
 
+[GetTCP (makes request for streaming)](java/nifi-std/README.md)
+
 
 
 ### minimum requirements
