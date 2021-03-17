@@ -9,9 +9,10 @@ This custom processor makes aggregation windows on a data stream. After the succ
 - calculations are fulfilled in Redis through lua scripting
 - uses system time
 
-![Alt text](/screens/timewindow1.PNG?raw=true "")
+![Alt text](timewindow1.PNG?raw=true "")
 #### Sample Scenario 
-let's configure a 300 sec window with 60 sec hop length. grouping field:card_no, aggregation_type:sum, aggregation_field:trx_amount
+Start RunEmbeddedRedis to simulate redis if you dont have real one.
+Let's configure a 300 sec window with 60 sec hop length. grouping field:card_no, aggregation_type:sum, aggregation_field:trx_amount
 - starts at **T** 
 - **T + 1** incoming event:
 {"customer_no":"1","card_no":"cc11","trx_amount":100}
