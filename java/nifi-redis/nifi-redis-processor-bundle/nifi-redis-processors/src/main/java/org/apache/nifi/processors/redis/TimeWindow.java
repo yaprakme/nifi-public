@@ -47,7 +47,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 /**
  * This processor provides TimeWindow component using the Redis in-memory data structure store
  */
-@Tags({"window", "softtech", "redis", "cache", "time"})
+@Tags({"window", "redis", "cache", "time"})
 @CapabilityDescription("Groups events by some fileds in a certain time window to aggregate on some other fields")
 public class TimeWindow extends AbstractProcessor {
 
