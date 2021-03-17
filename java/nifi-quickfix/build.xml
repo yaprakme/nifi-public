@@ -1,0 +1,14 @@
+<project name="nifi-quickfix" default="copy" basedir=".">
+
+	<description></description>
+
+	
+	<target name="copy" description="publish .nar files to the nifi" >
+		<copy todir="D:/nifi-1.11.3/lib" flatten="true">
+			<fileset dir="." >
+				 <include name="**/*.nar"/>
+			</fileset>
+		</copy>
+    </target>
+
+</project>
