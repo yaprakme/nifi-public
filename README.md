@@ -3,11 +3,13 @@ Demonstrates Apache Nifi custom processors, groovy components and templates
 
 [nifi-cdc](java/nifi-cdc/README.md)
 
+[QuickFIX/J Initiator](java/nifi-quickfix/README.md)
+
 [Redis Time Window](java/nifi-redis/README.md)
 
 [JCE Crypto](java/nifi-std/README.md)
 
-[GetTCP (makes request for streaming)](java/nifi-std/README.md)
+[GetTCP (makes request for streaming socket)](java/nifi-std/README.md)
 
 
 
