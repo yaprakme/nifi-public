@@ -13,7 +13,7 @@ Listens to sequential table inserts. Target table should have a sequence(increme
 
 # Test
    - import template
-   - adjust data source pooling settings. 'databaseConnectionPoolName' denotes db service name for 'IncrementalTabloListener' and 'Database Connection Pooling Service' is the same for 'ExecuteSQL'
+   - adjust data source pooling settings. 'databaseConnectionPoolName' denotes db service name for 'IncrementalTableListener' and 'Database Connection Pooling Service' is the same for 'ExecuteSQL'
    - update 'sqlSelectMaxId' to fetch latest sequence number for each iteration
    - update 'sqlToExecute' to listen to the desired table ('between :prm1 and :prm2' block should not be changed) 
 
