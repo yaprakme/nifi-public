@@ -11,6 +11,7 @@ Demonstrates Apache Nifi custom processors, groovy components and templates
 
 [GetTCP (makes request for streaming socket)](java/nifi-std/README.md)
 
+[Incremental Table Listener](templates/incremental-table-listener/README.md)
 
 
 ### minimum requirements
