@@ -45,5 +45,5 @@ Let's configure a 300 sec window with 60 sec hop length. grouping field:card_no,
     mvn clean package
     
 # Deploy
-    simply copy generated .ear file from target folder into $NIFI_HOME/lib folder
+    simply copy generated .nar file from target folder into $NIFI_HOME/lib folder
 

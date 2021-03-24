@@ -13,5 +13,5 @@
     mvn clean build install
     
 # Deploy
-   - simply copy generated .ear files from target folders into $NIFI_HOME/lib folder
+   - simply copy generated .nar files from target folders into $NIFI_HOME/lib folder
    - import example template.xml files into Nifi to see live examples  

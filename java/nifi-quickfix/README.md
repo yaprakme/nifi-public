@@ -16,5 +16,5 @@ Demonstrates quickfix/j initiator processor for Apache Nifi.
     mvn clean package
     
 # Deploy
-    simply copy generated .ear file from target folder into $NIFI_HOME/lib folder
+    simply copy generated .nar file from target folder into $NIFI_HOME/lib folder
 
