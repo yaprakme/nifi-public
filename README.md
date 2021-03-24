@@ -9,9 +9,13 @@ Demonstrates Apache Nifi custom processors, groovy components and templates
 
 [JCE Crypto](java/nifi-std/README.md)
 
-[GetTCP (makes request for streaming socket)](java/nifi-std/README.md)
+[GetTCP (request for streaming)](java/nifi-std/README.md)
 
 [Incremental Table Listener](templates/incremental-table-listener/README.md)
+
+[Pulsar Reader](java/nifi-pulsar-bundle-master/README.md)
+
+[Pulsar Publish/Consume](java/nifi-pulsar-bundle-master/README.md)
 
 
 ### minimum requirements
