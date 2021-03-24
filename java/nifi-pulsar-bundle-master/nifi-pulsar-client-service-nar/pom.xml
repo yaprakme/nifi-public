@@ -16,7 +16,7 @@
   <modelVersion>4.0.0</modelVersion>
   
   <parent>
-    <groupId>com.softtech.nifi</groupId>
+    <groupId>org.yaprakme.nifi</groupId>
     <artifactId>nifi-pulsar-bundle</artifactId>
     <version>1.11.4</version>
   </parent>
@@ -32,7 +32,7 @@
             <type>nar</type>
     </dependency>
   	<dependency>
-            <groupId>com.softtech.nifi</groupId>
+            <groupId>org.yaprakme.nifi</groupId>
             <artifactId>nifi-pulsar-client-service-api</artifactId>
             <version>${nifi.version}</version>
         </dependency>

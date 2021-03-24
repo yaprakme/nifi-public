@@ -11,14 +11,12 @@ Demonstrates pulsar processors for Apache Nifi. Based on [openconnectors](https:
 - implements Pulsar reader API
 - listens to the topic without subscription
 - persists last message id in Nifi satate manager
-- optionally starts with specific message id
 
 ![Alt text](pulsar1.PNG?raw=true "")
 
 # Test
-    - import tamplate  
     - Start a pulsar server
-    - adjust StandardPulsarClientService and enable it
+	- run junit tests
 # Build
     mvn clean package
     
