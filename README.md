@@ -1,7 +1,7 @@
 # Nifi
 Demonstrates Apache Nifi custom processors, groovy components and templates
 
-[nifi-cdc](java/nifi-cdc/README.md)
+[Oracle CDC (CaptureChangeOracle)](java/nifi-cdc/README.md)
 
 [QuickFIX/J Initiator](java/nifi-quickfix/README.md)
 
