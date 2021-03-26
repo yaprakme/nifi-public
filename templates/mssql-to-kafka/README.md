@@ -5,7 +5,7 @@ Captures database events(insert/update/delete) and put them into Kafka
 - Holds sequence number in Nifi state manager
 - supports poll size (MaxPollSize)
 - Starts from where you want (optioal StartDate) 
-- Outputs json
+- CDC processor outputs json see below for samples
 
 ![Alt text](ms-cdc1.PNG?raw=true "")
 
