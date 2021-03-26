@@ -15,6 +15,15 @@ This custom processor reads oracle bin logs via Oracle LogMiner packages
 - commited and rollbacked transactions are supported
 - compatible output with Nifi Mysql CDC (CaptureChangeMySQL)
 
+#### Enable logminer
+
+1.Invoke SQL*Plus and connect as a user with SYSDBA privileges.
+2.SHUTDOWN IMMEDIATE 
+3.STARTUP MOUNT
+4.ALTER DATABASE ARCHIVELOG;
+5.ALTER DATABASE OPEN;
+6.ARCHIVE LOG LIST
+
 #### Sample Output 
 
     {
