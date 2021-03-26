@@ -1,11 +1,11 @@
 # Nifi Template - CaptureChangeSqlServer To Kafka
 Captures database events(insert/update/delete) and put them into Kafka
 
-- checks target table every second (you can adjust this via Schedule tab)
-- holds sequence number in Nifi state manager
+- Checks target table every second (you can adjust this via Schedule tab)
+- Holds sequence number in Nifi state manager
 - supports poll size (MaxPollSize)
-- starts from where you want (optioal StartDate) 
-- outputs json
+- Starts from where you want (optioal StartDate) 
+- Outputs json
 
 ![Alt text](ms-cdc1.PNG?raw=true "")
 
@@ -32,8 +32,8 @@ EXECUTE sys.sp_cdc_help_change_data_capture
  
 
 # Test
-   - configure a ExecuteScript processor with groovy script to test only CDC or import template
-   - adjust data source pooling settings. 'ConnectionName' denotes db service name
+   - Configure a ExecuteScript processor with MsSqlChangeDataCapture.groovy script to test only CDC or import template to test flow
+   - Adjust data source pooling settings. 'ConnectionName' denotes db service name
    
    
 #### Sample Sql Server CDC Output 
