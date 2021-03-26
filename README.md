@@ -3,7 +3,7 @@ Demonstrates Apache Nifi custom processors, groovy components and templates
 
 [Oracle CDC (CaptureChangeOracle)](java/nifi-cdc/README.md)
 
-[MsSQL CDC (CaptureChangeSqlServer)](templates/mssql-to-kafka/README.md)
+[MsSQL CDC to Kafka](templates/mssql-to-kafka/README.md)
 
 [QuickFIX/J Initiator](java/nifi-quickfix/README.md)
 
