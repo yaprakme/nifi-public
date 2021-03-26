@@ -1,0 +1,616 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<template encoding-version="1.3">
+    <description></description>
+    <groupId>6e1624b5-0178-1000-7445-ef8fc86bb41e</groupId>
+    <name>MsSqlToKafka</name>
+    <snippet>
+        <connections>
+            <id>61acec47-f9d8-3841-0000-000000000000</id>
+            <parentGroupId>b71314f2-5e78-340b-0000-000000000000</parentGroupId>
+            <backPressureDataSizeThreshold>1 GB</backPressureDataSizeThreshold>
+            <backPressureObjectThreshold>10000</backPressureObjectThreshold>
+            <destination>
+                <groupId>b71314f2-5e78-340b-0000-000000000000</groupId>
+                <id>d2e38003-3b5f-3f5a-0000-000000000000</id>
+                <type>PROCESSOR</type>
+            </destination>
+            <flowFileExpiration>0 sec</flowFileExpiration>
+            <labelIndex>1</labelIndex>
+            <loadBalanceCompression>DO_NOT_COMPRESS</loadBalanceCompression>
+            <loadBalancePartitionAttribute></loadBalancePartitionAttribute>
+            <loadBalanceStatus>LOAD_BALANCE_NOT_CONFIGURED</loadBalanceStatus>
+            <loadBalanceStrategy>DO_NOT_LOAD_BALANCE</loadBalanceStrategy>
+            <name></name>
+            <selectedRelationships>success</selectedRelationships>
+            <source>
+                <groupId>b71314f2-5e78-340b-0000-000000000000</groupId>
+                <id>d479a9e8-b3bb-3de8-0000-000000000000</id>
+                <type>PROCESSOR</type>
+            </source>
+            <zIndex>0</zIndex>
+        </connections>
+        <processors>
+            <id>d2e38003-3b5f-3f5a-0000-000000000000</id>
+            <parentGroupId>b71314f2-5e78-340b-0000-000000000000</parentGroupId>
+            <position>
+                <x>0.0</x>
+                <y>336.0</y>
+            </position>
+            <bundle>
+                <artifact>nifi-kafka-0-10-nar</artifact>
+                <group>org.apache.nifi</group>
+                <version>1.11.3</version>
+            </bundle>
+            <config>
+                <bulletinLevel>WARN</bulletinLevel>
+                <comments></comments>
+                <concurrentlySchedulableTaskCount>1</concurrentlySchedulableTaskCount>
+                <descriptors>
+                    <entry>
+                        <key>bootstrap.servers</key>
+                        <value>
+                            <name>bootstrap.servers</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>security.protocol</key>
+                        <value>
+                            <name>security.protocol</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>sasl.kerberos.service.name</key>
+                        <value>
+                            <name>sasl.kerberos.service.name</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>kerberos-credentials-service</key>
+                        <value>
+                            <identifiesControllerService>org.apache.nifi.kerberos.KerberosCredentialsService</identifiesControllerService>
+                            <name>kerberos-credentials-service</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>sasl.kerberos.principal</key>
+                        <value>
+                            <name>sasl.kerberos.principal</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>sasl.kerberos.keytab</key>
+                        <value>
+                            <name>sasl.kerberos.keytab</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>ssl.context.service</key>
+                        <value>
+                            <identifiesControllerService>org.apache.nifi.ssl.SSLContextService</identifiesControllerService>
+                            <name>ssl.context.service</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>topic</key>
+                        <value>
+                            <name>topic</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>acks</key>
+                        <value>
+                            <name>acks</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>kafka-key</key>
+                        <value>
+                            <name>kafka-key</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>key-attribute-encoding</key>
+                        <value>
+                            <name>key-attribute-encoding</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>message-demarcator</key>
+                        <value>
+                            <name>message-demarcator</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>max.request.size</key>
+                        <value>
+                            <name>max.request.size</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>ack.wait.time</key>
+                        <value>
+                            <name>ack.wait.time</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>max.block.ms</key>
+                        <value>
+                            <name>max.block.ms</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>partitioner.class</key>
+                        <value>
+                            <name>partitioner.class</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>compression.type</key>
+                        <value>
+                            <name>compression.type</name>
+                        </value>
+                    </entry>
+                </descriptors>
+                <executionNode>ALL</executionNode>
+                <lossTolerant>false</lossTolerant>
+                <penaltyDuration>30 sec</penaltyDuration>
+                <properties>
+                    <entry>
+                        <key>bootstrap.servers</key>
+                        <value>localhost:9092</value>
+                    </entry>
+                    <entry>
+                        <key>security.protocol</key>
+                        <value>PLAINTEXT</value>
+                    </entry>
+                    <entry>
+                        <key>sasl.kerberos.service.name</key>
+                    </entry>
+                    <entry>
+                        <key>kerberos-credentials-service</key>
+                    </entry>
+                    <entry>
+                        <key>sasl.kerberos.principal</key>
+                    </entry>
+                    <entry>
+                        <key>sasl.kerberos.keytab</key>
+                    </entry>
+                    <entry>
+                        <key>ssl.context.service</key>
+                    </entry>
+                    <entry>
+                        <key>topic</key>
+                        <value>mssql-cdc</value>
+                    </entry>
+                    <entry>
+                        <key>acks</key>
+                        <value>0</value>
+                    </entry>
+                    <entry>
+                        <key>kafka-key</key>
+                    </entry>
+                    <entry>
+                        <key>key-attribute-encoding</key>
+                        <value>utf-8</value>
+                    </entry>
+                    <entry>
+                        <key>message-demarcator</key>
+                    </entry>
+                    <entry>
+                        <key>max.request.size</key>
+                        <value>1 MB</value>
+                    </entry>
+                    <entry>
+                        <key>ack.wait.time</key>
+                        <value>5 secs</value>
+                    </entry>
+                    <entry>
+                        <key>max.block.ms</key>
+                        <value>5 sec</value>
+                    </entry>
+                    <entry>
+                        <key>partitioner.class</key>
+                        <value>org.apache.kafka.clients.producer.internals.DefaultPartitioner</value>
+                    </entry>
+                    <entry>
+                        <key>compression.type</key>
+                        <value>none</value>
+                    </entry>
+                </properties>
+                <runDurationMillis>0</runDurationMillis>
+                <schedulingPeriod>0 sec</schedulingPeriod>
+                <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+                <yieldDuration>1 sec</yieldDuration>
+            </config>
+            <executionNodeRestricted>false</executionNodeRestricted>
+            <name>PublishKafka_0_10</name>
+            <relationships>
+                <autoTerminate>true</autoTerminate>
+                <name>failure</name>
+            </relationships>
+            <relationships>
+                <autoTerminate>true</autoTerminate>
+                <name>success</name>
+            </relationships>
+            <state>STOPPED</state>
+            <style/>
+            <type>org.apache.nifi.processors.kafka.pubsub.PublishKafka_0_10</type>
+        </processors>
+        <processors>
+            <id>d479a9e8-b3bb-3de8-0000-000000000000</id>
+            <parentGroupId>b71314f2-5e78-340b-0000-000000000000</parentGroupId>
+            <position>
+                <x>8.0</x>
+                <y>0.0</y>
+            </position>
+            <bundle>
+                <artifact>nifi-scripting-nar</artifact>
+                <group>org.apache.nifi</group>
+                <version>1.11.3</version>
+            </bundle>
+            <config>
+                <bulletinLevel>INFO</bulletinLevel>
+                <comments>Scheduled for 1 sn . 'MaxPoolSize' determines size of each iteration . 'DateFormat' is optional, example:dd-MM-yyyy HH:mm:ss.SSS . Order is important so this instance was configured to run 1 thread.</comments>
+                <concurrentlySchedulableTaskCount>1</concurrentlySchedulableTaskCount>
+                <descriptors>
+                    <entry>
+                        <key>Script Engine</key>
+                        <value>
+                            <name>Script Engine</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Script File</key>
+                        <value>
+                            <name>Script File</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Script Body</key>
+                        <value>
+                            <name>Script Body</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Module Directory</key>
+                        <value>
+                            <name>Module Directory</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>ConnectionName</key>
+                        <value>
+                            <name>ConnectionName</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>DateFormat</key>
+                        <value>
+                            <name>DateFormat</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>MaxPollSize</key>
+                        <value>
+                            <name>MaxPollSize</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Schema</key>
+                        <value>
+                            <name>Schema</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Table</key>
+                        <value>
+                            <name>Table</name>
+                        </value>
+                    </entry>
+                </descriptors>
+                <executionNode>ALL</executionNode>
+                <lossTolerant>false</lossTolerant>
+                <penaltyDuration>30 sec</penaltyDuration>
+                <properties>
+                    <entry>
+                        <key>Script Engine</key>
+                        <value>Groovy</value>
+                    </entry>
+                    <entry>
+                        <key>Script File</key>
+                    </entry>
+                    <entry>
+                        <key>Script Body</key>
+                        <value>import org.apache.nifi.controller.ControllerService
+import groovy.sql.Sql
+import java.nio.charset.StandardCharsets
+import org.apache.commons.io.IOUtils
+import org.apache.nifi.flowfile.FlowFile;
+import org.apache.nifi.components.state.Scope
+import groovy.json.JsonOutput
+import groovy.json.JsonGenerator
+import java.util.List
+import java.util.Map
+import java.util.HashMap
+import org.apache.nifi.processor.io.StreamCallback;
+
+
+
+// database service lookup
+def lookup = context.controllerServiceLookup
+def dbServiceName = ConnectionName.evaluateAttributeExpressions().getValue()
+def dbcpServiceId = lookup.getControllerServiceIdentifiers(ControllerService).find {
+	cs -&gt; lookup.getControllerServiceName(cs) == dbServiceName
+}
+// get connection
+def conn = lookup.getControllerService(dbcpServiceId)?.getConnection()
+conn.setNetworkTimeout(null, 10000)
+
+// get processor state
+def stateManager = context.stateManager
+def stateMap = null
+def captureInfo
+String sqlClause = null
+String startDate = null
+String dateFormat = null
+String maxPollSize = null
+
+
+try {
+	def sql = new Sql(conn)
+	def jsonGenerator = new JsonGenerator.Options().disableUnicodeEscaping().build()
+	
+	stateMap = stateManager.getState(Scope.CLUSTER).toMap()
+	startDate = binding.hasVariable('StartDate') ? StartDate.value : null
+	dateFormat = binding.hasVariable('DateFormat') ? DateFormat.value : null
+	maxPollSize = binding.hasVariable('MaxPollSize') ? MaxPollSize.value : '1000'
+	String schema = Schema.evaluateAttributeExpressions().getValue()
+	String table = Table.evaluateAttributeExpressions().getValue()
+	
+
+	captureInfo = getCaptureInfo(sql, schema, table, stateMap.offsetLongLsn)
+	if (captureInfo == null){
+		log.error('There is no capture to use. Please create capture')
+		// close connection before return
+		conn?.close()
+		// clear state for new capture
+		stateManager.clear(Scope.CLUSTER);
+		
+		return
+	}
+	
+	if (stateMap.offsetHexLsn == null) {
+		sqlClause = "SELECT top("+maxPollSize+") sys.fn_cdc_map_lsn_to_time(__\$start_lsn) as trx_time,* FROM cdc.fn_cdc_get_all_changes_"+captureInfo.capture_instance+" (sys.fn_cdc_map_time_to_lsn('smallest greater than','"+( (startDate!=null)?startDate:getFormattedStrDate(captureInfo.create_date,dateFormat) )+"'), sys.fn_cdc_get_max_lsn(), N'all update old')"
+	}else {
+		sqlClause = "SELECT top("+maxPollSize+") sys.fn_cdc_map_lsn_to_time(__\$start_lsn) as trx_time,* FROM cdc.fn_cdc_get_all_changes_"+captureInfo.capture_instance+" (sys.fn_cdc_increment_lsn("+stateMap.offsetHexLsn+"), sys.fn_cdc_get_max_lsn(), N'all update old')"
+	}
+	
+	int startColumn=5,columnCount;
+	def columnNames, columnsTypes
+	def updatedValues = null, updatedLsn = null;
+	
+	def metaClosure = { meta -&gt;
+		columnCount = meta.columnCount
+		columnNames = ((startColumn+1)..columnCount).collect{ meta.getColumnName(it) }
+		columnsTypes = ((startColumn+1)..columnCount).collect{ meta.getColumnTypeName(it) }
+	}
+	def rowClosure = { row -&gt;
+		def values = []
+		for (int i=startColumn; i&lt;columnCount; i++){
+			values.add(getValueOfType(columnsTypes[i-startColumn] , row[i], dateFormat))
+		}
+		//info(values)
+	
+		int operation = row[3]
+		String lsn = encodeHex(row[1])
+		
+		if (operation in [1,2,4]) {
+			
+			// prepare data
+			def dataNode = new LinkedHashMap()
+			dataNode.columns=columnNames
+			dataNode.types=columnsTypes
+			dataNode.keyColumns=captureInfo.index_column_list
+			dataNode.data=values
+			if (operation == 4 ) {
+				dataNode.before=(lsn.equals(updatedLsn)) ? updatedValues:null
+			}else{
+				dataNode.before=null
+			}
+			dataNode.operation=(operation == 1 ? "delete":(operation == 2 ? "insert":"update"))
+			dataNode.trxDate=row[0].toString()
+			dataNode.schema=schema
+			dataNode.table=table
+			dataNode.seq=lsn
+			
+			def dataJson = jsonGenerator.toJson(dataNode)
+			
+			// create data flow file
+			FlowFile ff = session.create();
+			ff = session.write(ff, {inputStream, outputStream -&gt;
+				   outputStream.write(dataJson.getBytes(StandardCharsets.UTF_8))
+			  } as StreamCallback)
+			ff = session.putAttribute(ff, 'lsn', lsn)
+			ff = session.putAttribute(ff, 'trx_date', row[0].toString())
+			ff = session.putAttribute(ff, 'capture_instance', captureInfo.capture_instance)
+			session.transfer(ff, REL_SUCCESS)
+			
+			// save state
+			stateManager.setState(['offsetHexLsn': lsn, 'offsetLongLsn': new BigInteger(row[1]).toString() ], Scope.CLUSTER);
+			
+		}else if (operation == 3){
+			updatedValues=values
+			updatedLsn=lsn
+			// do nothing, wait for update 4
+		}
+		
+	}
+	sql.eachRow(sqlClause, metaClosure, rowClosure)
+
+} catch(e) {
+	if (e instanceof java.sql.SQLException &amp;&amp; e.getErrorCode() == 313) {
+		log.info('Waiting for Event - '+ (stateMap.offsetHexLsn!=null?("Last commited lsn:"+stateMap.offsetHexLsn):("Capture["+captureInfo.capture_instance+"] started with date["+captureInfo.create_date+"]")) )
+	}else {
+	   log.error('MsSqlChangeDataCapture '+(sqlClause?("sql["+sqlClause+"]") : ""), e)
+	}
+}
+finally
+{
+	conn?.close()
+}
+
+
+Object getCaptureInfo(sql, schema, table, offsetLsn){
+	List rows = null
+	Map object = new HashMap()
+	String sqlClause = "EXECUTE sys.sp_cdc_help_change_data_capture @source_schema = N'"+schema+"', @source_name = N'"+table+"'"
+	try{
+	   rows = sql.rows(sqlClause)
+	   if (rows.size() == 1) { // there is one capture, use it
+			object = createCaptureObject(rows[0])
+	   }else if (rows.size() == 2){ // there are two capture, rows[0] == old, row[1] == new
+		  if (offsetLsn == null){ // initial cycle, use newest capture
+			object = createCaptureObject(rows[1])
+		  }else {
+			  BigInteger bOffsetLsn = new BigInteger(offsetLsn)
+			  BigInteger captureStartLsn =  rows[1].start_lsn ? new BigInteger(rows[1].start_lsn) : null
+			  if (bOffsetLsn &amp;&amp; captureStartLsn &amp;&amp; (bOffsetLsn.compareTo(captureStartLsn) == 0 || bOffsetLsn.compareTo(captureStartLsn) == 1)){  //  try to use newest capture if it meets offset
+				 object = createCaptureObject(rows[1])
+			  }else {
+				  // new capture has not reached the offset yet so use old capture
+				  object = createCaptureObject(rows[0])
+			  }
+		  }
+	   }else {
+		   log.error("Please check the 'Capture'. There must be up to 2 'Capture' for "+schema+"."+table)
+		   return null
+	   }
+	}catch(Exception e) {
+		if (e instanceof java.sql.SQLException &amp;&amp; e.getErrorCode() != 22985) {
+			log.error(""+sqlClause, e)
+		}else {
+			log.error("", e)
+		}
+		return null
+	}
+	log.info("SelectedCapture: " + object)
+	return object
+}
+
+Object createCaptureObject(row) {
+	Map object = new HashMap()
+	object.capture_instance = row.capture_instance
+	object.index_column_list = getIndexArray(row.index_column_list)
+	object.create_date = row.create_date
+	return object
+}
+
+String getFormattedStrDate(dateObj,dateFormat) {
+	String formattedDate = null
+	try{
+		if (dateFormat) {
+			Date date = new Date();
+			date.setTime(dateObj.getTime());
+			formattedDate = new java.text.SimpleDateFormat(dateFormat).format(date)
+			//info("formattedDate="+formattedDate)
+			return formattedDate;
+		}
+	}catch(Exception e) {
+		log.error("date format error", e)
+	}
+	return formattedDate;
+}
+
+Object getIndexArray(columnStr){
+	def values = null
+	if (columnStr != null &amp;&amp; ! columnStr.equals("")){
+		values = []
+		def splitted = columnStr.split(',',-1)
+		splitted.each { s -&gt;
+			s = s.trim()
+			values.add(s.substring(1,s.length()-1))
+		}
+	}
+	return values
+}
+
+String getValueOfType(type, value, dateFormat) {
+	
+	if (value == null) {
+		return "null"
+	}
+	
+	if (type.equalsIgnoreCase("binary")  // btye[] comes
+		|| type.equalsIgnoreCase("varbinary") // btye[] comes
+		|| type.equalsIgnoreCase("image") // btye[] comes
+	) {
+		  return encodeHex(value)
+	  }
+	 
+	  else if (type.equalsIgnoreCase("datetime")
+		  || type.equalsIgnoreCase("date")
+		  || type.equalsIgnoreCase("time"))
+	  {
+		  return getFormattedStrDate(value,dateFormat)
+	  }
+	  else {
+		  return value.toString()
+	  }
+	 //
+}
+
+String encodeHex(byteArray){
+	return '0x'+byteArray.encodeHex().toString()
+}
+
+void info(s){
+	log.info('MsSqlChangeDataCapture '+s)
+}
+</value>
+                    </entry>
+                    <entry>
+                        <key>Module Directory</key>
+                    </entry>
+                    <entry>
+                        <key>ConnectionName</key>
+                        <value>MSSQLCloud</value>
+                    </entry>
+                    <entry>
+                        <key>DateFormat</key>
+                        <value>dd-MM-yyyy HH:mm:ss.SSS</value>
+                    </entry>
+                    <entry>
+                        <key>MaxPollSize</key>
+                        <value>1000</value>
+                    </entry>
+                    <entry>
+                        <key>Schema</key>
+                        <value>dbo</value>
+                    </entry>
+                    <entry>
+                        <key>Table</key>
+                        <value>Person</value>
+                    </entry>
+                </properties>
+                <runDurationMillis>0</runDurationMillis>
+                <schedulingPeriod>1 sec</schedulingPeriod>
+                <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+                <yieldDuration>1 sec</yieldDuration>
+            </config>
+            <executionNodeRestricted>false</executionNodeRestricted>
+            <name>MsSqlChangeDataCapture</name>
+            <relationships>
+                <autoTerminate>true</autoTerminate>
+                <name>failure</name>
+            </relationships>
+            <relationships>
+                <autoTerminate>false</autoTerminate>
+                <name>success</name>
+            </relationships>
+            <state>STOPPED</state>
+            <style/>
+            <type>org.apache.nifi.processors.script.ExecuteScript</type>
+        </processors>
+    </snippet>
+    <timestamp>03/26/2021 17:04:31 EET</timestamp>
+</template>
