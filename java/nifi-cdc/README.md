@@ -17,7 +17,7 @@ This custom processor reads oracle bin logs via Oracle LogMiner packages
 
 #### Enable logminer
 
-- Invoke SQL*Plus and connect as a user with SYSDBA privileges.
+Invoke SQL*Plus and connect as a user with SYSDBA privileges, issue below commands
 - SHUTDOWN IMMEDIATE 
 - STARTUP MOUNT
 - ALTER DATABASE ARCHIVELOG;
