@@ -5,6 +5,8 @@ Demonstrates Apache Nifi custom processors, groovy components and templates
 
 [MsSQL CDC to Kafka](templates/mssql-to-kafka/README.md)
 
+[Hadoop Writer](java/nifi-hadoop-customs/README.md)
+
 [QuickFIX/J Initiator](java/nifi-quickfix/README.md)
 
 [Redis Time Window](java/nifi-redis/README.md)
