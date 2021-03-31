@@ -1,0 +1,699 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<template encoding-version="1.3">
+    <description></description>
+    <groupId>01781000-19e4-1e17-fabf-49766cccfea3</groupId>
+    <name>OracleCdcToHdfs</name>
+    <snippet>
+        <connections>
+            <id>90836a57-b758-3c46-0000-000000000000</id>
+            <parentGroupId>c9813dc1-5bd6-3676-0000-000000000000</parentGroupId>
+            <backPressureDataSizeThreshold>1 GB</backPressureDataSizeThreshold>
+            <backPressureObjectThreshold>10000</backPressureObjectThreshold>
+            <destination>
+                <groupId>c9813dc1-5bd6-3676-0000-000000000000</groupId>
+                <id>6570181e-6b5b-3dd2-0000-000000000000</id>
+                <type>PROCESSOR</type>
+            </destination>
+            <flowFileExpiration>0 sec</flowFileExpiration>
+            <labelIndex>1</labelIndex>
+            <loadBalanceCompression>DO_NOT_COMPRESS</loadBalanceCompression>
+            <loadBalancePartitionAttribute></loadBalancePartitionAttribute>
+            <loadBalanceStatus>LOAD_BALANCE_NOT_CONFIGURED</loadBalanceStatus>
+            <loadBalanceStrategy>DO_NOT_LOAD_BALANCE</loadBalanceStrategy>
+            <name></name>
+            <selectedRelationships>success</selectedRelationships>
+            <source>
+                <groupId>c9813dc1-5bd6-3676-0000-000000000000</groupId>
+                <id>6c1fa01e-83b3-3493-0000-000000000000</id>
+                <type>PROCESSOR</type>
+            </source>
+            <zIndex>0</zIndex>
+        </connections>
+        <connections>
+            <id>f029737a-363f-3903-0000-000000000000</id>
+            <parentGroupId>c9813dc1-5bd6-3676-0000-000000000000</parentGroupId>
+            <backPressureDataSizeThreshold>1 GB</backPressureDataSizeThreshold>
+            <backPressureObjectThreshold>10000</backPressureObjectThreshold>
+            <destination>
+                <groupId>c9813dc1-5bd6-3676-0000-000000000000</groupId>
+                <id>46881b60-cf6f-36b8-0000-000000000000</id>
+                <type>PROCESSOR</type>
+            </destination>
+            <flowFileExpiration>0 sec</flowFileExpiration>
+            <labelIndex>1</labelIndex>
+            <loadBalanceCompression>DO_NOT_COMPRESS</loadBalanceCompression>
+            <loadBalancePartitionAttribute></loadBalancePartitionAttribute>
+            <loadBalanceStatus>LOAD_BALANCE_NOT_CONFIGURED</loadBalanceStatus>
+            <loadBalanceStrategy>DO_NOT_LOAD_BALANCE</loadBalanceStrategy>
+            <name></name>
+            <selectedRelationships>success</selectedRelationships>
+            <source>
+                <groupId>c9813dc1-5bd6-3676-0000-000000000000</groupId>
+                <id>6570181e-6b5b-3dd2-0000-000000000000</id>
+                <type>PROCESSOR</type>
+            </source>
+            <zIndex>0</zIndex>
+        </connections>
+        <controllerServices>
+            <id>92cc448b-ec52-3949-0000-000000000000</id>
+            <parentGroupId>c9813dc1-5bd6-3676-0000-000000000000</parentGroupId>
+            <bundle>
+                <artifact>nifi-dbcp-service-nar</artifact>
+                <group>org.apache.nifi</group>
+                <version>1.11.3</version>
+            </bundle>
+            <comments></comments>
+            <descriptors>
+                <entry>
+                    <key>Database Connection URL</key>
+                    <value>
+                        <name>Database Connection URL</name>
+                    </value>
+                </entry>
+                <entry>
+                    <key>Database Driver Class Name</key>
+                    <value>
+                        <name>Database Driver Class Name</name>
+                    </value>
+                </entry>
+                <entry>
+                    <key>database-driver-locations</key>
+                    <value>
+                        <name>database-driver-locations</name>
+                    </value>
+                </entry>
+                <entry>
+                    <key>kerberos-credentials-service</key>
+                    <value>
+                        <identifiesControllerService>org.apache.nifi.kerberos.KerberosCredentialsService</identifiesControllerService>
+                        <name>kerberos-credentials-service</name>
+                    </value>
+                </entry>
+                <entry>
+                    <key>Database User</key>
+                    <value>
+                        <name>Database User</name>
+                    </value>
+                </entry>
+                <entry>
+                    <key>Password</key>
+                    <value>
+                        <name>Password</name>
+                    </value>
+                </entry>
+                <entry>
+                    <key>Max Wait Time</key>
+                    <value>
+                        <name>Max Wait Time</name>
+                    </value>
+                </entry>
+                <entry>
+                    <key>Max Total Connections</key>
+                    <value>
+                        <name>Max Total Connections</name>
+                    </value>
+                </entry>
+                <entry>
+                    <key>Validation-query</key>
+                    <value>
+                        <name>Validation-query</name>
+                    </value>
+                </entry>
+                <entry>
+                    <key>dbcp-min-idle-conns</key>
+                    <value>
+                        <name>dbcp-min-idle-conns</name>
+                    </value>
+                </entry>
+                <entry>
+                    <key>dbcp-max-idle-conns</key>
+                    <value>
+                        <name>dbcp-max-idle-conns</name>
+                    </value>
+                </entry>
+                <entry>
+                    <key>dbcp-max-conn-lifetime</key>
+                    <value>
+                        <name>dbcp-max-conn-lifetime</name>
+                    </value>
+                </entry>
+                <entry>
+                    <key>dbcp-time-between-eviction-runs</key>
+                    <value>
+                        <name>dbcp-time-between-eviction-runs</name>
+                    </value>
+                </entry>
+                <entry>
+                    <key>dbcp-min-evictable-idle-time</key>
+                    <value>
+                        <name>dbcp-min-evictable-idle-time</name>
+                    </value>
+                </entry>
+                <entry>
+                    <key>dbcp-soft-min-evictable-idle-time</key>
+                    <value>
+                        <name>dbcp-soft-min-evictable-idle-time</name>
+                    </value>
+                </entry>
+            </descriptors>
+            <name>Oracle12cR2</name>
+            <persistsState>false</persistsState>
+            <properties>
+                <entry>
+                    <key>Database Connection URL</key>
+                    <value>jdbc:oracle:thin:@localhost:1521:orcl</value>
+                </entry>
+                <entry>
+                    <key>Database Driver Class Name</key>
+                    <value>oracle.jdbc.driver.OracleDriver</value>
+                </entry>
+                <entry>
+                    <key>database-driver-locations</key>
+                    <value>D:\jars\ojdbc6</value>
+                </entry>
+                <entry>
+                    <key>kerberos-credentials-service</key>
+                </entry>
+                <entry>
+                    <key>Database User</key>
+                    <value>LOGMINER</value>
+                </entry>
+                <entry>
+                    <key>Password</key>
+                </entry>
+                <entry>
+                    <key>Max Wait Time</key>
+                    <value>500 millis</value>
+                </entry>
+                <entry>
+                    <key>Max Total Connections</key>
+                    <value>8</value>
+                </entry>
+                <entry>
+                    <key>Validation-query</key>
+                </entry>
+                <entry>
+                    <key>dbcp-min-idle-conns</key>
+                    <value>0</value>
+                </entry>
+                <entry>
+                    <key>dbcp-max-idle-conns</key>
+                    <value>8</value>
+                </entry>
+                <entry>
+                    <key>dbcp-max-conn-lifetime</key>
+                    <value>-1</value>
+                </entry>
+                <entry>
+                    <key>dbcp-time-between-eviction-runs</key>
+                    <value>-1</value>
+                </entry>
+                <entry>
+                    <key>dbcp-min-evictable-idle-time</key>
+                    <value>30 mins</value>
+                </entry>
+                <entry>
+                    <key>dbcp-soft-min-evictable-idle-time</key>
+                    <value>-1</value>
+                </entry>
+            </properties>
+            <state>ENABLED</state>
+            <type>org.apache.nifi.dbcp.DBCPConnectionPool</type>
+        </controllerServices>
+        <processors>
+            <id>46881b60-cf6f-36b8-0000-000000000000</id>
+            <parentGroupId>c9813dc1-5bd6-3676-0000-000000000000</parentGroupId>
+            <position>
+                <x>0.0</x>
+                <y>576.0</y>
+            </position>
+            <bundle>
+                <artifact>nifi-hadoop-processors-nar</artifact>
+                <group>default</group>
+                <version>unversioned</version>
+            </bundle>
+            <config>
+                <bulletinLevel>WARN</bulletinLevel>
+                <comments></comments>
+                <concurrentlySchedulableTaskCount>1</concurrentlySchedulableTaskCount>
+                <descriptors>
+                    <entry>
+                        <key>Hadoop Configuration Resources</key>
+                        <value>
+                            <name>Hadoop Configuration Resources</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>kerberos-credentials-service</key>
+                        <value>
+                            <identifiesControllerService>org.apache.nifi.kerberos.KerberosCredentialsService</identifiesControllerService>
+                            <name>kerberos-credentials-service</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Kerberos Principal</key>
+                        <value>
+                            <name>Kerberos Principal</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Kerberos Keytab</key>
+                        <value>
+                            <name>Kerberos Keytab</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Kerberos Relogin Period</key>
+                        <value>
+                            <name>Kerberos Relogin Period</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Additional Classpath Resources</key>
+                        <value>
+                            <name>Additional Classpath Resources</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Directory</key>
+                        <value>
+                            <name>Directory</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Operation Type</key>
+                        <value>
+                            <name>Operation Type</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Flow File Batch Size</key>
+                        <value>
+                            <name>Flow File Batch Size</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Block Size</key>
+                        <value>
+                            <name>Block Size</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>IO Buffer Size</key>
+                        <value>
+                            <name>IO Buffer Size</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Replication</key>
+                        <value>
+                            <name>Replication</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Permissions umask</key>
+                        <value>
+                            <name>Permissions umask</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Remote Owner</key>
+                        <value>
+                            <name>Remote Owner</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Remote Group</key>
+                        <value>
+                            <name>Remote Group</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Compression codec</key>
+                        <value>
+                            <name>Compression codec</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Ignore Locality</key>
+                        <value>
+                            <name>Ignore Locality</name>
+                        </value>
+                    </entry>
+                </descriptors>
+                <executionNode>ALL</executionNode>
+                <lossTolerant>false</lossTolerant>
+                <penaltyDuration>30 sec</penaltyDuration>
+                <properties>
+                    <entry>
+                        <key>Hadoop Configuration Resources</key>
+                        <value>D:\hadoop-3.1.0\etc\hadoop\core-site.xml,D:\hadoop-3.1.0\etc\hadoop\hdfs-site.xml</value>
+                    </entry>
+                    <entry>
+                        <key>kerberos-credentials-service</key>
+                    </entry>
+                    <entry>
+                        <key>Kerberos Principal</key>
+                    </entry>
+                    <entry>
+                        <key>Kerberos Keytab</key>
+                    </entry>
+                    <entry>
+                        <key>Kerberos Relogin Period</key>
+                        <value>4 hours</value>
+                    </entry>
+                    <entry>
+                        <key>Additional Classpath Resources</key>
+                    </entry>
+                    <entry>
+                        <key>Directory</key>
+                        <value>/test-dir</value>
+                    </entry>
+                    <entry>
+                        <key>Operation Type</key>
+                        <value>FILE_CRUD</value>
+                    </entry>
+                    <entry>
+                        <key>Flow File Batch Size</key>
+                        <value>100</value>
+                    </entry>
+                    <entry>
+                        <key>Block Size</key>
+                    </entry>
+                    <entry>
+                        <key>IO Buffer Size</key>
+                    </entry>
+                    <entry>
+                        <key>Replication</key>
+                    </entry>
+                    <entry>
+                        <key>Permissions umask</key>
+                    </entry>
+                    <entry>
+                        <key>Remote Owner</key>
+                    </entry>
+                    <entry>
+                        <key>Remote Group</key>
+                    </entry>
+                    <entry>
+                        <key>Compression codec</key>
+                        <value>NONE</value>
+                    </entry>
+                    <entry>
+                        <key>Ignore Locality</key>
+                        <value>false</value>
+                    </entry>
+                </properties>
+                <runDurationMillis>0</runDurationMillis>
+                <schedulingPeriod>0 sec</schedulingPeriod>
+                <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+                <yieldDuration>1 sec</yieldDuration>
+            </config>
+            <executionNodeRestricted>false</executionNodeRestricted>
+            <name>HdfsWriter</name>
+            <relationships>
+                <autoTerminate>true</autoTerminate>
+                <name>failure</name>
+            </relationships>
+            <relationships>
+                <autoTerminate>true</autoTerminate>
+                <name>success</name>
+            </relationships>
+            <state>STOPPED</state>
+            <style/>
+            <type>org.apache.nifi.processors.hadoop.HdfsWriter</type>
+        </processors>
+        <processors>
+            <id>6570181e-6b5b-3dd2-0000-000000000000</id>
+            <parentGroupId>c9813dc1-5bd6-3676-0000-000000000000</parentGroupId>
+            <position>
+                <x>8.0</x>
+                <y>280.0</y>
+            </position>
+            <bundle>
+                <artifact>nifi-scripting-nar</artifact>
+                <group>org.apache.nifi</group>
+                <version>1.11.3</version>
+            </bundle>
+            <config>
+                <bulletinLevel>WARN</bulletinLevel>
+                <comments></comments>
+                <concurrentlySchedulableTaskCount>1</concurrentlySchedulableTaskCount>
+                <descriptors>
+                    <entry>
+                        <key>Script Engine</key>
+                        <value>
+                            <name>Script Engine</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Script File</key>
+                        <value>
+                            <name>Script File</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Script Body</key>
+                        <value>
+                            <name>Script Body</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Module Directory</key>
+                        <value>
+                            <name>Module Directory</name>
+                        </value>
+                    </entry>
+                </descriptors>
+                <executionNode>ALL</executionNode>
+                <lossTolerant>false</lossTolerant>
+                <penaltyDuration>30 sec</penaltyDuration>
+                <properties>
+                    <entry>
+                        <key>Script Engine</key>
+                        <value>Groovy</value>
+                    </entry>
+                    <entry>
+                        <key>Script File</key>
+                    </entry>
+                    <entry>
+                        <key>Script Body</key>
+                        <value>import org.apache.nifi.controller.ControllerService
+import groovy.sql.Sql
+import org.apache.commons.io.IOUtils
+import groovy.json.JsonOutput
+import groovy.json.JsonSlurper
+import groovy.json.JsonGenerator
+import java.nio.charset.StandardCharsets
+import java.util.HashMap
+import java.util.Map
+import java.util.List
+import java.util.ArrayList
+import org.apache.nifi.flowfile.FlowFile;
+import org.apache.nifi.processor.io.StreamCallback;
+
+
+
+Integer maxBatchSize = binding.hasVariable('MaxBatchSize') ? new Integer(MaxBatchSize.value) : 1000
+def jsonGenerator = new JsonGenerator.Options().disableUnicodeEscaping().build()
+
+
+
+flowFileList = session.get(maxBatchSize)
+if(!flowFileList.isEmpty()) {
+   flowFileList.each { flowfile -&gt;
+// start flowFileList loop
+	   
+def contentJson = null
+String fileName = ""
+String fileContent = null
+String text = null
+
+try {
+	
+   flowfile = session.write(flowfile, {inputStream, outputStream -&gt;
+	   text = IOUtils.toString(inputStream, StandardCharsets.UTF_8)
+	   contentJson = new JsonSlurper().parseText(text)
+	} as StreamCallback)
+   
+   
+   fileName = contentJson.row_id
+   
+   def dataNode = new LinkedHashMap()
+   for (int i=0; i&lt;contentJson.columns.size(); i++) {
+	   Object c = contentJson.columns[i]
+	   dataNode.put(c.name, c.value)
+   }
+   
+
+   // create data flow file
+   FlowFile ff = session.create();
+   ff = session.write(ff, {inputStream, outputStream -&gt;
+		  outputStream.write(jsonGenerator.toJson(dataNode).getBytes(StandardCharsets.UTF_8))
+	 } as StreamCallback)
+   ff = session.putAttribute(ff, 'operation', ""+ (contentJson.type=='delete'?'delete':'insert'))
+   ff = session.putAttribute(ff, 'filename', ""+ fileName)
+   session.transfer(ff, REL_SUCCESS)
+   //
+   
+   
+} catch (Exception e) {
+	log.error("",e)
+}
+finally
+{
+	session.transfer(flowfile, REL_FAILURE)
+}
+
+
+// end of flowFileList list
+}
+}
+
+
+
+// utilities
+
+Object getKeyValues(contentJson, kc) {
+	for (int i=0; i&lt;contentJson.columns.size(); i++) {
+		String c = contentJson.columns[i]
+		if (c.equalsIgnoreCase(kc) ) {
+			return  contentJson.data[i]
+		}
+	}
+	return null
+}
+
+void info(s){
+	log.info('HdfsPrepare '+s)
+}</value>
+                    </entry>
+                    <entry>
+                        <key>Module Directory</key>
+                    </entry>
+                </properties>
+                <runDurationMillis>0</runDurationMillis>
+                <schedulingPeriod>0 sec</schedulingPeriod>
+                <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+                <yieldDuration>1 sec</yieldDuration>
+            </config>
+            <executionNodeRestricted>false</executionNodeRestricted>
+            <name>ExecuteScript</name>
+            <relationships>
+                <autoTerminate>true</autoTerminate>
+                <name>failure</name>
+            </relationships>
+            <relationships>
+                <autoTerminate>false</autoTerminate>
+                <name>success</name>
+            </relationships>
+            <state>STOPPED</state>
+            <style/>
+            <type>org.apache.nifi.processors.script.ExecuteScript</type>
+        </processors>
+        <processors>
+            <id>6c1fa01e-83b3-3493-0000-000000000000</id>
+            <parentGroupId>c9813dc1-5bd6-3676-0000-000000000000</parentGroupId>
+            <position>
+                <x>16.0</x>
+                <y>0.0</y>
+            </position>
+            <bundle>
+                <artifact>nifi-cdc-processors-nar</artifact>
+                <group>org.yaprakme.nifi</group>
+                <version>1.11.4</version>
+            </bundle>
+            <config>
+                <bulletinLevel>WARN</bulletinLevel>
+                <comments></comments>
+                <concurrentlySchedulableTaskCount>1</concurrentlySchedulableTaskCount>
+                <descriptors>
+                    <entry>
+                        <key>Database Connection Pooling Service</key>
+                        <value>
+                            <identifiesControllerService>org.apache.nifi.dbcp.DBCPService</identifiesControllerService>
+                            <name>Database Connection Pooling Service</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Max Fetch Size</key>
+                        <value>
+                            <name>Max Fetch Size</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Max Wait Time</key>
+                        <value>
+                            <name>Max Wait Time</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Table Names</key>
+                        <value>
+                            <name>Table Names</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>Transaction Handling Strategy</key>
+                        <value>
+                            <name>Transaction Handling Strategy</name>
+                        </value>
+                    </entry>
+                    <entry>
+                        <key>session1</key>
+                        <value>
+                            <name>session1</name>
+                        </value>
+                    </entry>
+                </descriptors>
+                <executionNode>ALL</executionNode>
+                <lossTolerant>false</lossTolerant>
+                <penaltyDuration>30 sec</penaltyDuration>
+                <properties>
+                    <entry>
+                        <key>Database Connection Pooling Service</key>
+                        <value>92cc448b-ec52-3949-0000-000000000000</value>
+                    </entry>
+                    <entry>
+                        <key>Max Fetch Size</key>
+                        <value>1000</value>
+                    </entry>
+                    <entry>
+                        <key>Max Wait Time</key>
+                        <value>300</value>
+                    </entry>
+                    <entry>
+                        <key>Table Names</key>
+                        <value>LOGMINER.PERSON,LOGMINER.DEPT</value>
+                    </entry>
+                    <entry>
+                        <key>Transaction Handling Strategy</key>
+                        <value>all</value>
+                    </entry>
+                    <entry>
+                        <key>session1</key>
+                        <value>alter session set nls_date_format='yyyy-MM-dd"T"HH24:MI:SS'</value>
+                    </entry>
+                </properties>
+                <runDurationMillis>0</runDurationMillis>
+                <schedulingPeriod>1 sec</schedulingPeriod>
+                <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+                <yieldDuration>1 sec</yieldDuration>
+            </config>
+            <executionNodeRestricted>false</executionNodeRestricted>
+            <name>OracleLogMinerReader</name>
+            <relationships>
+                <autoTerminate>true</autoTerminate>
+                <name>failure</name>
+            </relationships>
+            <relationships>
+                <autoTerminate>false</autoTerminate>
+                <name>success</name>
+            </relationships>
+            <state>STOPPED</state>
+            <style/>
+            <type>org.apache.nifi.processors.cdc.OracleLogMinerReader</type>
+        </processors>
+    </snippet>
+    <timestamp>03/30/2021 17:59:54 EET</timestamp>
+</template>

@@ -7,6 +7,8 @@ Demonstrates Apache Nifi custom processors, groovy components and templates
 
 [Hadoop Writer](java/nifi-hadoop-customs/README.md)
 
+[Oracle CDC To Hadoop](templates/oracle-cdc-to-hdfs/README.md)
+
 [QuickFIX/J Initiator](java/nifi-quickfix/README.md)
 
 [Redis Time Window](java/nifi-redis/README.md)
