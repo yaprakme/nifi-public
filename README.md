@@ -3,6 +3,8 @@ Demonstrates Apache Nifi custom processors, groovy components and templates
 
 [Oracle CDC (CaptureChangeOracle)](java/nifi-cdc/README.md)
 
+[Oracle CDC To Elastic](templates/oracle-cdc-to-elastic/README.md)
+
 [MsSQL CDC to Kafka](templates/mssql-to-kafka/README.md)
 
 [Hadoop Writer](java/nifi-hadoop-customs/README.md)
