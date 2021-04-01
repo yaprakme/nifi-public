@@ -741,7 +741,7 @@ public void createFlowFile(session, data) {
                 <yieldDuration>1 sec</yieldDuration>
             </config>
             <executionNodeRestricted>false</executionNodeRestricted>
-            <name>ExecuteScript</name>
+            <name>OracleCdcToElasticHandler.groovy</name>
             <relationships>
                 <autoTerminate>true</autoTerminate>
                 <name>failure</name>
@@ -858,5 +858,5 @@ public void createFlowFile(session, data) {
             <type>org.apache.nifi.processors.cdc.OracleLogMinerReader</type>
         </processors>
     </snippet>
-    <timestamp>04/01/2021 14:06:27 EET</timestamp>
+    <timestamp>04/01/2021 14:14:28 EET</timestamp>
 </template>
