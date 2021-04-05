@@ -29,7 +29,6 @@ Demonstrates Apache Nifi custom processors, groovy components and templates
 
 ### tested
 - Nifi 1.11.4
-- IDE (java 1.8, groovy 2.5.4, maven3 supported)
 
 ### optional live test requirements 
 - Elasticsearch 7.0
