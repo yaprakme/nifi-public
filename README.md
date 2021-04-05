@@ -25,8 +25,9 @@ Demonstrates Apache Nifi custom processors, groovy components and templates
 
 [Pulsar Publish/Consume](java/nifi-pulsar-bundle-master/README.md)
 
+[Basic DB to DB replicate](templates/db-to-db-basic-replicate/README.md)
 
-### minimum requirements
+### tested
 - Nifi 1.11.4
 - IDE (java 1.8, groovy 2.5.4, maven3 supported)
 
@@ -35,6 +36,7 @@ Demonstrates Apache Nifi custom processors, groovy components and templates
 - Redis 4
 - Kafka 1.0
 - Pulsar 2.7
+- Hadoop 3.1
 - RDMS database (Oracle, MsSql, MySql etc)
 
 
