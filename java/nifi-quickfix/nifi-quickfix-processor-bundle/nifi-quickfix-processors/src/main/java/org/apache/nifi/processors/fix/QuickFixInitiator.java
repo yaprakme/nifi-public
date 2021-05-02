@@ -18,7 +18,6 @@ import org.apache.nifi.annotation.lifecycle.OnUnscheduled;
 import org.apache.nifi.components.PropertyDescriptor;
 import org.apache.nifi.components.Validator;
 import org.apache.nifi.components.state.Scope;
-import org.apache.nifi.dbcp.DBCPService;
 import org.apache.nifi.expression.ExpressionLanguageScope;
 import org.apache.nifi.flowfile.FlowFile;
 import org.apache.nifi.logging.ComponentLog;
@@ -195,7 +194,6 @@ public class QuickFixInitiator extends AbstractProcessor {
     private Set<Relationship> relationships;
 
     
-    private DBCPService passwordService; 
     
     @Override
     public Set<Relationship> getRelationships() {
@@ -205,6 +203,10 @@ public class QuickFixInitiator extends AbstractProcessor {
 
     @OnScheduled
     public void setup(ProcessContext context) {
+		
+    }
+    
+    public void init(ProcessContext context) {
     	final ComponentLog logger = getLogger();
     	String beginString = context.getProperty(BEGIN_STRING).getValue();
         String targetCompId = context.getProperty(TARGET_COMPONENT_ID).getValue();
@@ -273,7 +275,7 @@ public class QuickFixInitiator extends AbstractProcessor {
     	    doStop.set(false);
     	    
 		} catch (Exception e) {
-			logger.error("setup : ", e);
+			logger.error("init : ", e);
 		}
 		
     }
@@ -281,8 +283,10 @@ public class QuickFixInitiator extends AbstractProcessor {
     @OnUnscheduled
     public void shutDown(final ProcessContext context) {
     	 getLogger().debug("@OnUnscheduled");
-    	 initiator.stop();	
     	 doStop.set(true);
+    	 if (initiator != null) {
+    		 initiator.stop();	
+    	 }    	 
     }
     
 
@@ -333,6 +337,8 @@ public class QuickFixInitiator extends AbstractProcessor {
 	@Override
     public void onTrigger(final ProcessContext context, final ProcessSession session) throws ProcessException {
     	final ComponentLog logger = getLogger();
+    	
+    	init(context);
     	
 		try {
 			
